@@ -4,7 +4,7 @@
 # 🔥 Simpli Framework  
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Release](https://img.shields.io/github/v/release/username/simpli-framework)](https://github.com/username/simpli-framework/releases)
+[![Release](https://img.shields.io/github/v/release/otonk/simpli-framework)](https://github.com/oyonk/simpli-framework/releases)
 
 Framework PHP native sederhana berbasis MVC untuk project kecil-menengah.  
 
@@ -18,7 +18,7 @@ Framework PHP native sederhana berbasis MVC untuk project kecil-menengah.
 ## 🚀 Instalasi
 1. Clone repo:
    ```bash
-   git clone https://github.com/username/simpli-framework.git
+   git clone https://github.com/otonk/simpli-framework.git
    ```
 2. Atur BASEURL di `config.php`:
    ```php
