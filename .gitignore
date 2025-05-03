@@ -1,19 +1,23 @@
-# File database SQLite (jangan di-upload)
-/database/*.db
-/database/*.db-shm
-/database/*.db-wal
+# File environment (berisi kredensial sensitif)
+.env
 
-# Folder vendor Composer (jika nanti pakai)
+# Database SQLite (biasanya tidak disimpan di Git)
+/database/*.db
+/database/*.sqlite
+/database/*.sqlite3
+
+# Log files
+*.log
+/logs/
+
+# Folder vendor (jika menggunakan Composer)
 /vendor/
 
-# File log/error (jika ada)
-/logs/
-*.log
-
-# File sistem
-.DS_Store
+# IDE/Editor specific files
 .idea/
-*.swp
-
-# Asset development (opsional)
-/public/assets/images/uploads/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

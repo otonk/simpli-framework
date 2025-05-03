@@ -1,10 +1,9 @@
 ![PHP Version](https://img.shields.io/badge/PHP-8.0%2B-purple)
 ![Database](https://img.shields.io/badge/SQLite-3.x-green)
-
-# 🔥 Simpli Framework  
-
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Release](https://img.shields.io/github/v/release/otonk/simpli-framework)](https://github.com/otonk/simpli-framework/releases)
+
+# 🔥 Simpli Framework  
 
 Framework PHP native sederhana berbasis MVC untuk project kecil-menengah.  
 

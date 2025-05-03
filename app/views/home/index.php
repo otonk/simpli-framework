@@ -1,13 +1,15 @@
 <?php
-spl_autoload_register(function($class) {
-    $paths = [
-        '../app/controllers/',
-        '../app/models/',
-        '../app/core/'
-    ];
-    foreach ($paths as $path) {
-        $file = $path . $class . '.php';
-        if (file_exists($file)) require_once $file;
-    }
-});
+// Konten spesifik untuk halaman home (akan dimasukkan ke dalam layout)
+// Variabel $data tersedia dari Controller
 ?>
+
+<div class="content">
+    <p style="margin-top: 2rem; font-size: 1rem; color: #555;">
+        Anda berada di halaman utama (`home/index`).
+    </p>
+    <p style="font-size: 0.9rem;">
+        Coba akses <a href="<?= BASEURL ?>/home/user/NamaAnda">/home/user/NamaAnda</a>
+        atau <a href="<?= BASEURL ?>/nonexistentpage">halaman yang tidak ada</a> untuk melihat error 404.
+    </p>
+
+    </div>
