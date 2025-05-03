@@ -4,7 +4,7 @@
 # 🔥 Simpli Framework  
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Release](https://img.shields.io/github/v/release/otonk/simpli-framework)](https://github.com/oyonk/simpli-framework/releases)
+[![Release](https://img.shields.io/github/v/release/otonk/simpli-framework)](https://github.com/otonk/simpli-framework/releases)
 
 Framework PHP native sederhana berbasis MVC untuk project kecil-menengah.  
 
