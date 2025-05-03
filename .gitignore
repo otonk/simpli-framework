@@ -1,0 +1,19 @@
+# File database SQLite (jangan di-upload)
+/database/*.db
+/database/*.db-shm
+/database/*.db-wal
+
+# Folder vendor Composer (jika nanti pakai)
+/vendor/
+
+# File log/error (jika ada)
+/logs/
+*.log
+
+# File sistem
+.DS_Store
+.idea/
+*.swp
+
+# Asset development (opsional)
+/public/assets/images/uploads/
