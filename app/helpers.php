@@ -7,11 +7,8 @@
  * @return string URL lengkap ke aset.
  */
 function asset($path) {
-    // Hapus slash di awal jika ada
     $path = ltrim($path, '/');
-    // Gabungkan BASEURL dengan path aset
     $url = rtrim(BASEURL, '/') . '/assets/' . $path;
-    // Escape URL untuk keamanan (meskipun biasanya tidak perlu untuk path aset internal)
     return htmlspecialchars($url, ENT_QUOTES, 'UTF-8');
 }
 
@@ -21,15 +18,13 @@ function asset($path) {
  * @param string $url Path tujuan (e.g., 'users/profile', '/posts').
  */
 function redirect($url) {
-    // Hapus slash di awal jika ada, tambahkan satu jika perlu
     $location = rtrim(BASEURL, '/') . '/' . ltrim($url, '/');
     header("Location: " . $location);
-    exit; // Pastikan script berhenti setelah redirect
+    exit;
 }
 
 /**
  * Helper untuk mendapatkan instance PDO Database (opsional).
- * Memudahkan akses DB tanpa 'use' namespace jika tidak pakai namespace.
  * @return PDO
  */
 function db() {
@@ -44,6 +39,39 @@ function db() {
  */
 function e(?string $string): string {
     return htmlspecialchars($string ?? '', ENT_QUOTES, 'UTF-8');
+}
+
+/**
+ * Menghasilkan tag <script> untuk inisialisasi DataTables pada elemen tertentu.
+ *
+ * @param string $tableSelector CSS Selector untuk tabel (e.g., '#myTable', '.datatable-class').
+ * @param array $options Array opsi DataTables dalam format PHP (akan di-encode ke JSON).
+ * @return string Tag <script> lengkap.
+ */
+function initDataTables(string $tableSelector, array $options = []): string {
+    // Encode opsi PHP ke JSON, pastikan angka tidak jadi string
+    $jsonOptions = json_encode($options, JSON_PRETTY_PRINT | JSON_NUMERIC_CHECK);
+
+    // Gunakan HEREDOC untuk script yang lebih rapi
+    $script = <<<HTML
+<script>
+    // Pastikan jQuery dan DataTables sudah dimuat sebelum script ini dijalankan
+    // $(document).ready() memastikan DOM siap
+    $(document).ready(function() {
+        // Cek jika elemen tabel ada sebelum inisialisasi
+        if ($('$tableSelector').length) {
+            try {
+                $('$tableSelector').DataTable($jsonOptions);
+            } catch (e) {
+                console.error("Error initializing DataTables for selector '$tableSelector':", e);
+            }
+        } else {
+             console.warn("DataTables warning: Element with selector '$tableSelector' not found.");
+        }
+    });
+</script>
+HTML;
+    return $script; // Return string script
 }
 
 ?>

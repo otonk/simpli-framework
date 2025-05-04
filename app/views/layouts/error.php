@@ -8,73 +8,74 @@
     <style>
         body {
             font-family: 'Lato', sans-serif;
-            background: #e9ecef; /* Latar belakang error sedikit beda */
+            background: #e9ecef; /* Background error */
             color: #495057;
             text-align: center;
             padding: 3rem 1rem;
             line-height: 1.6;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            flex-direction: column; /* Susun vertikal */
+            justify-content: center; /* Pusatkan vertikal */
+            align-items: center; /* Pusatkan horizontal */
+            min-height: calc(100vh - 6rem); /* Tinggi minimal body dikurangi padding */
             margin: 0;
         }
-        .error-container {
-            background: #fff;
-            padding: 2rem 3rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            max-width: 600px;
-            width: 100%;
-        }
-        .error-code { /* Style untuk kode error seperti 404, 500 */
+        /* Hapus style .error-container */
+
+        .error-code {
             font-size: 6rem;
             font-weight: 300;
-            color: #dc3545; /* Merah untuk error */
+            color: #dc3545;
             margin: 0;
             line-height: 1;
         }
-        .error-message { /* Style untuk pesan utama error */
+        .error-message {
              font-size: 1.5rem;
              font-weight: 300;
              margin-top: 1rem;
              margin-bottom: 1.5rem;
              color: #343a40;
         }
-        .error-details { /* Style untuk detail error 500 */
-            background: #f8f9fa;
+        .error-details { /* Detail error 500 tetap pakai box */
+            background: #fff; /* Background putih untuk detail */
             border: 1px solid #dee2e6;
-            padding: 1rem;
-            border-radius: 5px;
+            padding: 1.5rem; /* Padding lebih besar */
+            border-radius: 8px; /* Sudut lebih bulat */
             margin-top: 2rem;
             text-align: left;
             font-family: monospace;
             font-size: 0.85rem;
             line-height: 1.4;
             word-break: break-all;
-            max-height: 300px; /* Batasi tinggi jika terlalu panjang */
-            overflow-y: auto; /* Tambah scroll jika perlu */
+            max-height: 400px; /* Batasi tinggi */
+            overflow-y: auto;
+            max-width: 800px; /* Batasi lebar detail error */
+            width: 90%; /* Lebar relatif */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Shadow halus */
         }
         .error-details h3 {
             margin-top: 0;
             font-size: 1rem;
             color: #212529;
+            margin-bottom: 1rem; /* Jarak bawah heading detail */
         }
         .error-details p {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem; /* Jarak antar paragraf detail */
             font-size: 0.9rem;
         }
          .error-details pre {
-             background: #e9ecef;
-             padding: 10px;
+             background: #f1f3f5; /* Background pre lebih terang */
+             padding: 15px; /* Padding lebih besar */
              border-radius: 4px;
              overflow-x: auto;
              white-space: pre-wrap;
              word-wrap: break-word;
+             border: 1px solid #dee2e6; /* Border halus di pre */
          }
         a {
             color: #007bff;
             text-decoration: none;
+            font-weight: 400; /* Sedikit tebalkan link */
         }
         a:hover {
             text-decoration: underline;
@@ -84,24 +85,31 @@
              margin-bottom: 1.5rem;
              opacity: 0.8;
         }
+        .back-link { /* Style untuk link kembali */
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
-    <div class="error-container">
-         <?php if (!empty($data['show_logo'])): ?>
-             <img src="<?= e(BASEURL) ?>/assets/logo.svg" alt="Simpli Logo" class="logo-error">
-         <?php endif; ?>
+     <?php if (!empty($data['show_logo'])): ?>
+         <img src="<?= e(BASEURL) ?>/assets/logo.svg" alt="Simpli Logo" class="logo-error">
+     <?php endif; ?>
 
-        <?php
-        // Memuat konten error spesifik (404.php atau 500.php)
-        if (isset($viewPath) && file_exists($viewPath)) {
-            require_once $viewPath;
-        } else {
-            // Fallback jika file view error tidak ada
-             echo '<h1 class="error-code">Error</h1>';
-             echo '<p class="error-message">Error view file not found.</p>';
-        }
-        ?>
+    <?php
+    // Memuat konten error spesifik (404.php atau 500.php)
+    // Konten ini sekarang akan langsung di dalam body
+    if (isset($viewPath) && file_exists($viewPath)) {
+        require_once $viewPath;
+    } else {
+         echo '<h1 class="error-code">Error</h1>';
+         echo '<p class="error-message">Error view file not found.</p>';
+    }
+    ?>
+
+    <div class="back-link">
+        <a href="<?= e(BASEURL) ?>">← Kembali ke Beranda</a>
     </div>
+
 </body>
 </html>
